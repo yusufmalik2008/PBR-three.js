@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEST - High-Level Libs @joseph</title>
+    <style>
+        body { margin: 0; background: #111; }
+        canvas { display: block; }
+    </style>
+</head>
+<body><!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TEST - High-Level Libs @joseph</title>
+        <style>
+            body { margin: 0; background: #111; }
+            canvas { display: block; }
+        </style>
+    </head>
+    <body>
+        <script type="module">
+            import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
+            
+
+            const scene = new THREE.Scene();
+            //scene.background = new THREE.Color(0xf0dab1);
+            const camera = new THREE.PerspectiveCamera(75, innerWidth/innerHeight, 0.1, 1000);
+        camera.position.set(0, 2, 5);
+
+            const renderer = new THREE.WebGLRenderer({antialias: true});
+            renderer.setSize(innerWidth, innerHeight);
+            document.body.appendChild(renderer.domElement);
+
+        // IBL (used only for lighting, not for background)
+        const pmrem = new THREE.PMREMGenerator(renderer);
+        pmrem.compileEquirectangularShader();
+
+        new THREE.TextureLoader().load(
+        'https://threejs.org/examples/textures/2294472375_24a3b8ef46_o.jpg',
+        (texture) => {
+            const envMap = pmrem.fromEquirectangular(texture).texture;
+            scene.environment = envMap; // ✅ lighting only
+            scene.background = envMap;
+            texture.dispose();
+            pmrem.dispose();
+        }
+        );
+
+            
+
+            const ambient = new THREE.AmbientLight(0x404040, 0.6);
+            scene.add(ambient);
+
+            const ground = new THREE.Mesh(
+        new THREE.PlaneGeometry(100, 100),
+        new THREE.MeshStandardMaterial({
+            color: 0x334477,       // ✨ dreamy tint
+        roughness: 0.2,       // ✨ sharp reflections
+        metalness: 0.6,        // ✨ max reflectivity
+        side: THREE.DoubleSide
+        })
+    );
+    ground.rotation.x = -Math.PI / 2;  // Flat
+    ground.position.y = 0;
+    scene.add(ground);
+
+
+            const geometry = new THREE.BoxGeometry();
+            const material = new THREE.MeshStandardMaterial({
+                color: 0x44ccff,
+                metalness: 0.5,
+                roughness: 0.1,
+            });
+
+            const cubes = [];
+            for(let i = -2; i <= 2; i++) {
+            const cube     = new THREE.Mesh(geometry, material);
+            cube.position.set(i * 1.5, 0.5, 0);
+            scene.add(cube);
+            cubes.push(cube);
+            const shadow = new THREE.Mesh(
+    new THREE.CircleGeometry(0.7, 32),
+    new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 0.4 })
+    );
+    shadow.rotation.x = -Math.PI / 2;
+    shadow.position.set(cube.position.x, 0.01, cube.position.z);
+    scene.add(shadow);
+            }
+
+            
+        
+
+            
+            renderer.shadowMap.enabled = true;
+            renderer.shadowMap.type    = THREE.PCFSoftShadowMap;
+            // const cube     = new THREE.Mesh(geometry, material);
+            // scene.add(cube);
+
+            const light = new THREE.DirectionalLight(0xffffff, 1);light.castShadow = true;
+    light.position.set(4, 10, 4);
+    light.lookAt(0, 0, 0);
+    light.shadow.mapSize.set(512, 512);
+    light.shadow.camera.left = -20;
+    light.shadow.camera.right = 20;
+    light.shadow.camera.top = 20;
+    light.shadow.camera.bottom = -20;
+    light.shadow.camera.near = 0.1;
+    light.shadow.camera.far = 50;
+
+    //const shadowCamHelper = new THREE.CameraHelper(light.shadow.camera);
+    //scene.add(shadowCamHelper);
+    scene.add(light);
+
+
+            ground.receiveShadow = true;
+            for (let i = -2; i <= 2; i++) {
+        const cube = new THREE.Mesh(geometry, material);
+        cube.position.set(i * 1.5, 0.5, 0);
+        cube.castShadow = true;
+        // cube.receiveShadow = false; ← optional
+        scene.add(cube);
+        cubes.push(cube);
+    }
+
+
+            
+let last = performance.now();
+    let yaw = 0, pitch = 0;
+    let velocity = new THREE.Vector3();
+    const keys = {};
+
+    document.body.addEventListener('click', () => {
+        document.body.requestPointerLock();
+    });
+
+    document.addEventListener('pointerlockchange', () => {
+        if (document.pointerLockElement) {
+            document.addEventListener('mousemove', onMouseMove, false);
+        } else {
+            document.removeEventListener('mousemove', onMouseMove, false);
+        }
+    });
+
+    function onMouseMove(e) {
+        yaw   -= e.movementX * 0.002;
+        pitch -= e.movementY * 0.002;
+        pitch = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, pitch)); // Clamp pitch
+    }
+
+    addEventListener('keydown', (e) => keys[e.key.toLowerCase()] = true);
+    addEventListener('keyup', (e) => keys[e.key.toLowerCase()] = false);
+    function animate() {
+        requestAnimationFrame(animate);
+
+        // FPS fly movement
+        const speed = 0.05;
+        const dir = new THREE.Vector3();
+
+        if (keys['w']) dir.z -= 1;
+        if (keys['s']) dir.z += 1;
+        if (keys['a']) dir.x -= 1;
+        if (keys['d']) dir.x += 1;
+
+        dir.normalize();
+        dir.applyAxisAngle(new THREE.Vector3(0,1,0), yaw); // Rotate with yaw
+
+        velocity.copy(dir).multiplyScalar(speed);
+        camera.position.add(velocity);
+
+        // Rotate camera (pitch/yaw)
+        camera.rotation.order = 'YXZ'; // Required for yaw-pitch
+        camera.rotation.y = yaw;
+        camera.rotation.x = pitch;
+
+        // Rotate all cubes
+        for (let i = 0; i < cubes.length; i++) {
+            cubes[i].rotation.x += 0.01;
+            cubes[i].rotation.y += 0.01;
+        }
+
+        // FPS counter
+         const now = performance.now();
+    const delta = now - last;
+    console.log("Frame Time:", delta.toFixed(2) + "ms", "FPS:", (1000 / delta).toFixed(1));
+    last = now;
+
+        renderer.render(scene, camera);
+    }
+
+
+            animate();
+
+            addEventListener('resize', () => {
+                camera.aspect = innerWidth / innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(innerWidth, innerHeight);
+            });
+        </script>
+    </body>
+    </html>
