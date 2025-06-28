@@ -29,7 +29,16 @@ No installation or setup required.
 
 MIT License
 
+
+![WhatsApp Image 2025-06-28 at 13 11 10_ac4cb3ef](https://github.com/user-attachments/assets/c9229c2e-6f5b-4f89-a7f6-16563036c15d)
+
+
+
+https://github.com/user-attachments/assets/a900ba2e-b86d-4dcb-9feb-0a762a9aebf3
+
+
 ---
 
 **Will be polished as we go**  
 **v1.0 — 6/28/2025**
+
