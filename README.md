@@ -3,6 +3,7 @@ physically correct splitsum renderer
 + supports IBL
 + supports physically-correct shadow and light PBR model.
 + tweak roughness/metalness per mesh, or load a roughness + metalness texture into a mesh.
++ presented Photogrammetry wood mesh, and car mesh.
 + splitsum PBR for bridging hardware limitaiton gap.
 optimized for HD 3000.
 
