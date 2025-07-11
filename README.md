@@ -1,47 +1,37 @@
-# PBR-three.js
-# Three.js PBR Lighting & Shadow Demo
+physically correct splitsum renderer
++ v1.02, immense upgrade.
++ supports IBL
++ supports physically-correct shadow and light PBR model.
++ tweak roughness/metalness per mesh, or load a roughness + metalness texture into a mesh.
++ splitsum PBR for bridging hardware limitaiton gap.
+optimized for HD 3000.
 
-A simple real-time 3D scene using Three.js with PBR materials, soft shadows, environment lighting, and basic WASD + mouse fly controls. Built as a standalone HTML page with no external build tools.
 
-## Features
+FUTURE
 
-- Physically-Based Rendering (PBR) with `MeshStandardMaterial`
-- Image-based lighting (IBL) using an HDR environment map
+
+FORMER
 - Directional light with soft PCF shadows
-- Ambient light for base fill
-- Rotating cubes and a reflective ground plane
-- Basic fly-style camera with mouse look and WASD movement
-- Runs directly in modern browsers using ES modules
 
-## Controls
+CONTROLS Mouse drag-around.
 
-- `W`, `A`, `S`, `D` – Move
-- Mouse – Look around
-- Click – Lock pointer (enter camera mode)
-- `Esc` – Exit pointer lock
+open `index.html` in a modern web browser.
+to bypass CORS, use a local server.
 
-## Usage
+SYNTAX
++ example can be used a python server,
++ on a regular CMD within my Windows 11 which has installed Python
+````
+ python -m http.server 8000
+````
+then, open
+`http://localhost:8000/index.html`
 
-Just open `index.html` in a modern web browser (Chrome, Firefox, Edge).  
 No installation or setup required.
 
-## License
+LICENSE
 
 MIT License
 
-
+FORMER
 ![WhatsApp Image 2025-06-28 at 13 11 10_ac4cb3e](https://github.com/user-attachments/assets/c9229c2e-6f5b-4f89-a7f6-16563036c15d)
-
-
-
-
-
-https://github.com/user-attachments/assets/01326abe-90fb-475d-b9c4-80606a9ca3e5
-
-
-
----
-
-**Will be polished as we go**  
-**v1.0 — 6/28/2025**
-
