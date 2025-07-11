@@ -34,8 +34,17 @@ LICENSE
 
 MIT License
 
+
+NEW
+
+
+
+https://youtube.com/shorts/IqXh2bV_AFI
+
+
+
+
+
 OLD VERSION (PAST)
 ![WhatsApp Image 2025-06-28 at 13 11 10_ac4cb3e](https://github.com/user-attachments/assets/c9229c2e-6f5b-4f89-a7f6-16563036c15d)
 
-NEW
-https://youtube.com/shorts/IqXh2bV_AFI
