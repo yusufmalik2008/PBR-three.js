@@ -5,10 +5,14 @@ physically correct splitsum renderer
 + tweak roughness/metalness per mesh, or load a roughness + metalness texture into a mesh.
 + presented Photogrammetry wood mesh, and car mesh.
 + splitsum PBR for bridging hardware limitaiton gap.
-optimized for HD 3000.
+OPTIMIZED FOR:  this is running real-time on Intel@ HD 3000.
 
 
 FUTURE
++ will supports specularmaps and glossnessmaps
++ will support volumetric rendering
++ will support PCF shadows
++ will have lots of debug panels and interactivity/lots of features.
 
 
 OLD VERSION (PAST)
@@ -30,19 +34,19 @@ then, open
 
 No installation or setup required.
 
-LICENSE
-
-MIT License
+LICENSE: MIT License
 
 
-NEW
+NEW (1 July 2025)
 
 
 [![Watch the demo](https://img.youtube.com/vi/IqXh2bV_AFI/hqdefault.jpg)](https://youtube.com/shorts/IqXh2bV_AFI)
 
+**Please click at the video above.**
+@joseph7f, Youtube Channel, 7/12/2025
 
 
-
-OLD VERSION (PAST)
++ old version is discontinued and archived.
+OLD VERSION (PAST, DISCONTINUED, ARCHIVED)
 ![WhatsApp Image 2025-06-28 at 13 11 10_ac4cb3e](https://github.com/user-attachments/assets/c9229c2e-6f5b-4f89-a7f6-16563036c15d)
 
