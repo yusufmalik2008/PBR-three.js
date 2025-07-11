@@ -38,9 +38,7 @@ MIT License
 NEW
 
 
-
-https://youtube.com/shorts/IqXh2bV_AFI
-
+[![Watch the demo](https://img.youtube.com/vi/IqXh2bV_AFI/hqdefault.jpg)](https://youtube.com/shorts/IqXh2bV_AFI)
 
 
 
