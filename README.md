@@ -18,6 +18,18 @@ FUTURE
 OLD VERSION (PAST)
 - Directional light with soft PCF shadows
 
+MODELS
+The following 3D models were used in this project under the [Creative Commons Attribution License (CC BY)](https://creativecommons.org/licenses/by/4.0/):
+
+- **ABANDONED SOVIET CAR (IZH 2715)**  
+  by [Andrey](https://sketchfab.com/andreykorlukov)  
+  [View on Sketchfab](https://sketchfab.com/3d-models/abandoned-soviet-car-izh-2715-b97884f0730d42a68c1a6a9a9874159d)
+
+- **WOOD BENCH (3D SCAN + RETOPO)**  
+  by [Renafox](https://sketchfab.com/renafox)  
+  [View on Sketchfab](https://sketchfab.com/3d-models/wood-bench-3d-scan-retopo-1192a169689d470e8d3398cc417fa5c8)
+
+
 CONTROLS Mouse drag-around.
 
 open `index.html` in a modern web browser.
