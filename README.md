@@ -1,4 +1,6 @@
-<img width="1360" height="720" alt="threejs_screenshot (6)" src="https://github.com/user-attachments/assets/5c217e99-acbb-4984-90af-ed13ea2c4299" />a real 3d FPS hobby! project (Update 25 July 2025)
+V1.04: just went with a real 3d FPS hobby! project (Update 25 July 2025)
+
+<img width="1360" height="720" alt="threejs_screenshot (6)" src="https://github.com/user-attachments/assets/5c217e99-acbb-4984-90af-ed13ea2c4299" />
 <img width="1360" height="720" alt="threejs_screenshot (11)" src="https://github.com/user-attachments/assets/49ae9a60-18ca-4658-9c84-d3cd862376de" />
 <img width="1360" height="720" alt="threejs_screenshot (8)" src="https://github.com/user-attachments/assets/69f074d4-5bec-4e6a-b901-cf32d210d266" />
 <img width="1360" height="720" alt="threejs_screenshot (4)" src="https://github.com/user-attachments/assets/23838d4c-fff7-4898-90d8-e508092ddaac" />
