@@ -16,4 +16,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages        # target branch
-          folder: "physically-correct1" # your project folder
+          folder: physically-correct1 # your project folder
